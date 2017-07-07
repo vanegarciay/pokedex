@@ -23,6 +23,10 @@ h1 {
     color: #E84848;
 }
 
+input#pokemon_buscado {
+    padding-left: 2em;
+}
+
 div.pokemon-single {
     cursor: pointer;
 }
