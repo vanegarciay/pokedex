@@ -56,4 +56,5 @@ p.pokemon-name {
     margin: 0 auto;
     font-weight: bold;
     color: #646464;
+    text-transform: capitalize;
 }

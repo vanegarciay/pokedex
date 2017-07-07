@@ -12,4 +12,51 @@ $(document).ready(function(){
       complete: function() {} // Callback for Modal close
     }
   );
+
+  var insertarPokemon = function(name) {
+    var html_pokemon = '<div class="col s12 m2 pokemon-single">' +
+        '<a href="#pokemon-modal">' +
+        '    <div class="pokemon-content">' +
+        '        <img src="assets/img/015.png">' +
+        '        <p class="pokemon-icons center-align">' +
+        '            <img src="assets/icon/pokeball_gray.png">' +
+        '            <img src="assets/icon/valentines-heart.png">' +
+        '            <img src="assets/icon/data.png">' +
+        '        </p>' +
+        '        <p class="pokemon-name center-align">' +
+        '            ' + name +
+        '        </p>' +
+        '    </div>' +
+        '</a>' +
+    '</div>';
+
+    $("#pokemones-container").append(html_pokemon);
+  }
+
+  var generarListaDePokemones = function(json_pokemones) {
+    $.each(json_pokemones, function (index, data) {
+        /*console.log(data.pokemon_species);*/
+        insertarPokemon(data.pokemon_species.name);
+        
+        return index < 20;
+    });
+  }
+
+  var ajaxPokemon = function() {
+    $.ajax({
+        url: 'http://pokeapi.co/api/v2/pokedex/1/',
+        type: 'GET',
+        datatype: 'json'
+    })
+    .done(function(response){
+        /*console.log(response.pokemon_entries);*/
+        generarListaDePokemones(response.pokemon_entries);
+    })
+    .fail(function(){
+        console.log("error");
+    });
+  }
+
+  ajaxPokemon();
+
 });
