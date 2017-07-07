@@ -17,7 +17,7 @@ $(document).ready(function(){
     var html_pokemon = '<div class="col s12 m2 pokemon-single">' +
         '<a href="#pokemon-modal">' +
         '    <div class="pokemon-content">' +
-        '        <img src="https://img.pokemondb.net/sprites/x-y/normal/${pokemon_species.img}.png" alt="Bulbasaur">' +
+        '        <img src="https://img.pokemondb.net/sprites/x-y/normal/'+img+'.png" alt="Bulbasaur">' +
         '        <p class="pokemon-icons center-align">' +
         '            <img src="assets/icon/pokeball_gray.png">' +
         '            <img src="assets/icon/valentines-heart.png">' +
@@ -34,9 +34,9 @@ $(document).ready(function(){
   }
 
   var generarListaDePokemones = function(json_pokemones) {
-    $.each(json_pokemones, function (index, data,img) {
-        console.log(data.pokemon_species);
-        insertarPokemon(data.pokemon_species.name);
+    $.each(json_pokemones, function (index, data, img) {
+        /*console.log(data.pokemon_species);*/
+        insertarPokemon(data.pokemon_species.name, data.pokemon_species.name);
         return index < 20;
     });
   }
@@ -50,6 +50,7 @@ $(document).ready(function(){
     .done(function(response){
         /*console.log(response.pokemon_entries);*/
         generarListaDePokemones(response.pokemon_entries);
+
     })
     .fail(function(){
         console.log("error");
@@ -63,34 +64,6 @@ $(document).ready(function(){
     /*console.log($(this).find(".pokemon-name").text());*/
     $("#pokemon-modal h4").text($(this).find('.pokemon-name').text());
   });
-
-
-/*GENERAR IMAGENES DE POKEMONES MEDIANTE API https://pokemondb.net/sprites*/
-  var generarImagenesDePokemones = function(json_imagen_pokemones) {
-      $.each(json_imagen_pokemones, function (img) {
-          /*console.log(json_imagen_pokemones);*/
-          insertarPokemon(img.pokemon_species.name);
-          
-          return index < 20;
-      });
-    }
-
-  var ajaxImagenPokemon = function() {
-    $.ajax({
-        url: 'http://pokeapi.co/api/v2/pokedex/1/',
-        type: 'GET',
-        datatype: 'json'
-    })
-    .done(function(response){
-        /*console.log(response.pokemon_entries);*/
-        generarImagenesDePokemones(response.pokemon_entries);
-    })
-    .fail(function(){
-        console.log("error");
-    });
-  }
-
-  ajaxImagenPokemon();
 
 });
 
