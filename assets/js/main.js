@@ -17,7 +17,7 @@ $(document).ready(function(){
     var html_pokemon = '<div class="col s12 m2 pokemon-single">' +
         '<a href="#pokemon-modal">' +
         '    <div class="pokemon-content">' +
-        '        <img src="https://img.pokemondb.net/sprites/x-y/normal/'+img+'.png" alt="Bulbasaur">' +
+        '        <img src="https://img.pokemondb.net/sprites/x-y/normal/'+img+'.png" alt="Bulbasaur" class="pokemon">' +
         '        <p class="pokemon-icons center-align">' +
         '            <img src="assets/icon/pokeball_gray.png">' +
         '            <img src="assets/icon/valentines-heart.png">' +
@@ -63,8 +63,7 @@ $(document).ready(function(){
     event.preventDefault();
     /*console.log($(this).find(".pokemon-name").text());*/
     $("#pokemon-modal h4").text($(this).find('.pokemon-name').text());
+    $("#pokemon-modal img").text($(this).find('img').text());
   });
 
 });
-
-/*<img src="https://img.pokemondb.net/sprites/x-y/normal/${pokemon.pokemon_species.name}.png" alt="Bulbasaur"></a>*/
