@@ -31,7 +31,7 @@ div.pokemon-single {
     cursor: pointer;
 }
 
-div.pokemon-single img {
+div.pokemon-single img.pokemon {
     width: 100%;
 }
 
@@ -60,5 +60,9 @@ p.pokemon-name {
     margin: 0 auto;
     font-weight: bold;
     color: #646464;
+    text-transform: capitalize;
+}
+
+div#pokemon-modal h4 {
     text-transform: capitalize;
 }
